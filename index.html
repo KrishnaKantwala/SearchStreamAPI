@@ -1,6 +1,163 @@
-<html>
-  <head> </head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitch Stream Search</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+      /* Header Section */
+      #search-stream {
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+        background-color: #fff;
+      }
+      h1 {
+        color: #007bff;
+        text-align: left;
+        margin: 0 0 10px 0;
+        font-size: 24px;
+      }
+      p {
+        margin: 5px 0;
+      }
+      #search-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 300px;
+      }
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #007bff;
+      }
+      /* Wrapper Body */
+      #wrapper-body {
+        margin: 20px;
+      }
+      #total-results {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #444;
+      }
+      #results {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .card {
+        display: flex;
+        border: 1px solid #ddd;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .card img {
+        width: 120px;
+        height: auto;
+        margin-right: 15px;
+        border-radius: 4px;
+      }
+      .card-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .title > h3 {
+        float: left;
+        margin: 0;
+      }
+      .online {
+        width: 8px;
+        height: 8px;
+        background: red;
+        border-radius: 50%;
+        float: left;
+        margin: 8px 8px 8px 8px;
+      }
+      /* Loading Spinner */
+      #spinner {
+        text-align: center;
+        display: none;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #007bff;
+      }
+      /* Pagination */
+      .pagination {
+        display: flex;
+        justify-content: right;
+        margin-top: 20px;
+        gap: 5px;
+        align-content: center;
+        align-items: center;
+        margin-right: 20px;
+      }
+      .pagination button {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+      }
+      .pagination button.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+      .pagination button:hover {
+        background-color: #e4e4e4;
+      }
+      .tag {
+        background-color: #e7e7e7;
+        color: #333;
+        font-size: 12px;
+        padding: 3px 6px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
   <body>
-    <h1>Hello World !! </h1>
+    <!-- Search Header -->
+    <div id="search-stream">
+      <h1>Across the Streams!</h1>
+      <div id="search-container">
+        <input type="text" id="query" placeholder="start typing..." />
+        <button onclick="searchStreams()">Search</button>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+
+    <!-- Wrapper Body -->
+    <div id="wrapper-body">
+      <div id="spinner">🔄 Loading...</div>
+      <div id="total-results"></div>
+      <div id="error" class="error"></div>
+      <div id="results"></div>
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
