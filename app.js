@@ -141,6 +141,9 @@ function displayResults(streams) {
       '<strong>Tags: </strong>' + tagsHtml
     } </p>
     <p>${'<strong>Started At: </strong>' + formatISODate(stream.started_at)}</p>
+    <a href="https://twitch.tv/${
+      stream.user_login
+    }" target="_blank">Visit Channel</a>
         </div>
       </div>
     `;
